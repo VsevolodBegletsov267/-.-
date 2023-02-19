@@ -9,8 +9,9 @@ iarduino_MultiServo MSS0;
 iarduino_MultiServo MSS1;
 iarduino_MultiServo MSS2;
 iarduino_MultiServo MSS3;
+iarduino_MultiServo MSS4;
 
-byte recieved_data[4]; 
+byte recieved_data[5]; 
 
 byte address[][6] = {"1Node", "2Node", "3Node", "4Node", "5Node", "6Node"}; 
 
@@ -32,14 +33,16 @@ void setup() {
   radio.powerUp();        
   radio.startListening();   
 
-  MSS0.servoSet(15,SERVO_SG90);
-  MSS1.servoSet(4,SERVO_SG90);
-  MSS2.servoSet(8,SERVO_SG90);
-  MSS3.servoSet(12,SERVO_SG90);
+  MSS0.servoSet(15,SERVO_MG996R);
+  MSS1.servoSet(4,SERVO_MG996R);
+  MSS2.servoSet(8,SERVO_MG996R);
+  MSS3.servoSet(12,SERVO_MG996R);
+  MSS4.servoSet(15, SERVO_MG996R);
   MSS0.begin();
   MSS1.begin();
   MSS2.begin();
   MSS3.begin();
+  MSS4.begin();
 }
 
 void loop() {
@@ -51,5 +54,6 @@ void loop() {
     MSS1.servoWrite(4,recieved_data[1]);
     MSS2.servoWrite(8,recieved_data[2]);
     MSS3.servoWrite(12,recieved_data[3]);
+    MSS4.servoWrite(15,recieved_data[4]);
     delay(15);
   }
