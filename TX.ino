@@ -18,9 +18,10 @@ byte potent0 = 0;
 byte potent1 = 1;
 byte potent2 = 2;
 byte potent3 = 3;
+byte potent4 = 4;
 
-byte transmit_data[4]; 
-byte latest_data[4];    
+byte transmit_data[5]; 
+byte latest_data[5];    
 boolean flag;           
 
 void setup() {
@@ -47,6 +48,7 @@ void loop() {
   transmit_data[1] = map(analogRead(potent1), 0, 1023, 0, 180);
   transmit_data[2] = map(analogRead(potent2), 0, 1023, 0, 180);  
   transmit_data[3] = map(analogRead(potent3), 0, 1023, 0, 180);
+  transmit_data[4] = map(analogRead(potent4), 0, 1023, 0, 180);
 
   for (int i = 0; i < 4; i++) {               
     if (transmit_data[i] != latest_data[i]) { 
